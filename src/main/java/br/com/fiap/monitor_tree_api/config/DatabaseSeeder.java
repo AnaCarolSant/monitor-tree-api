@@ -33,25 +33,25 @@ public class DatabaseSeeder {
     @PostConstruct
     public void init() {
         // Usuários
-        var joao = Usuario.builder()
-                .nome("João")
+        var celina = Usuario.builder()
+                .nome("Celina Alcantara")
                 .cpf("443.600.840-13")
                 .telefone("11999999999")
-                .email("joao@fiap.com.br")
+                .email("celina@fiap.com.br")
                 .senha(passwordEncoder.encode("12345"))
                 .role(UserRole.ADMIN)
                 .build();
 
-        var davi = Usuario.builder()
-                .nome("Davi")
+        var ana = Usuario.builder()
+                .nome("Ana Carolina")
                 .cpf("858.049.070-77")
                 .telefone("11988888888")
-                .email("davi@fiap.com.br")
+                .email("ana@fiap.com.br")
                 .senha(passwordEncoder.encode("1234"))
                 .role(UserRole.USER)
                 .build();
 
-        usuarioRepository.saveAll(List.of(joao, davi));
+        usuarioRepository.saveAll(List.of(celina, ana));
 
         // Sensores
         var sensor1 = Sensor.builder()

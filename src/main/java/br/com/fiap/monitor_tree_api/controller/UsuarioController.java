@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.fiap.monitor_tree_api.dto.UsuarioDTO;
 import br.com.fiap.monitor_tree_api.model.Usuario;
 import br.com.fiap.monitor_tree_api.model.UsuarioFilter;
 import br.com.fiap.monitor_tree_api.repository.UsuarioRepository;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -43,9 +45,11 @@ public class UsuarioController {
     @PostMapping
     @Operation(responses = @ApiResponse(responseCode = "400"))
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario create(@RequestBody Usuario usuario){
-        log.info("Cadastrando um usuário: {}", usuario);
-        return repository.save(usuario);
+    public UsuarioDTO create(@RequestBody @Valid UsuarioDTO usuarioDTO){
+        log.info("Cadastrando um usuário: {}", usuarioDTO);
+        Usuario usuario = usuarioDTO.toEntity();
+        Usuario saved = repository.save(usuario);
+        return UsuarioDTO.fromEntity(saved);
     }
 
     @GetMapping("{id}")
