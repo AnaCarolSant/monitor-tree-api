@@ -3,6 +3,8 @@
 
 API para monitoramento de sensores, leituras e alertas, com autenticação via JWT 🔐.
 
+
+Documentação Swagger http://localhost:8080/swagger-ui/index.html
 ---
 
 ## 🛢 Banco de Dados
