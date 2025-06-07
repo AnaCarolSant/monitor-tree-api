@@ -297,6 +297,82 @@ Content-Type: application/json
 **DELETE** `http://localhost:8080/alertas/{id}`  
 **Headers:**
 ```
+
+# 📞 Chamados
+
+API para gerenciamento de chamados relacionados a alertas.
+
+---
+
+### 1. Criar chamado
+
+**POST /chamados**
+
+```json
+{
+  "alertaId": 1,
+  "titulo": "Verificar Sensor",
+  "descricao": "Sensor apresentou falha.",
+  "status": "ABERTO",
+  "tipo": "DRONES",
+  "dataHoraAbertura": "2025-06-07T10:00:00"
+}
+```
+
+---
+
+### 2. Listar chamados (paginado)
+
+**GET /chamados?page=0&size=10**
+
+---
+
+### 3. Buscar chamado por ID
+
+**GET /chamados/{id}**
+
+---
+
+### 4. Atualizar chamado
+
+**PUT /chamados/{id}**
+
+```json
+{
+  "alertaId": 1,
+  "titulo": "Verificar Sensor URGENTE",
+  "descricao": "Sensor apresentou falha crítica.",
+  "status": "PENDENTE",
+  "tipo": "ESPECIALISTA",
+  "dataHoraAbertura": "2025-06-07T10:00:00",
+  "dataHoraFechamento": "2025-06-07T12:00:00"
+}
+```
+
+---
+
+### 5. Deletar chamado
+
+**DELETE /chamados/{id}**
+
+---
+
+## 🏷️ Valores possíveis para `tipo`
+
+- `DRONES`
+- `ESPECIALISTA`
+- `BOMBEIROS`
+- `POLICIA`
+
+---
+
+## ℹ️ Observações
+
+- O campo `status` deve ser um valor válido do enum `ChamadoStatus` (ex: `ABERTO`, `PENDENTE`, `RESOLVIDO`).
+- O campo `tipo` deve ser um dos valores acima.
+- Datas devem estar no formato ISO, ex: `"2025-06-07T10:00:00"`.
+
+---
 Authorization: Bearer <token>
 ```
 
