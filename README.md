@@ -296,13 +296,9 @@ Content-Type: application/json
 
 **DELETE** `http://localhost:8080/alertas/{id}`  
 **Headers:**
-```
+
 
 # 📞 Chamados
-
-API para gerenciamento de chamados relacionados a alertas.
-
----
 
 ### 1. Criar chamado
 
@@ -342,7 +338,7 @@ API para gerenciamento de chamados relacionados a alertas.
   "alertaId": 1,
   "titulo": "Verificar Sensor URGENTE",
   "descricao": "Sensor apresentou falha crítica.",
-  "status": "PENDENTE",
+  "status": "RESOLVIDO",
   "tipo": "ESPECIALISTA",
   "dataHoraAbertura": "2025-06-07T10:00:00",
   "dataHoraFechamento": "2025-06-07T12:00:00"
